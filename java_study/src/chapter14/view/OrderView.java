@@ -8,7 +8,7 @@ public class OrderView {
 	
 	// 메뉴 선택을 사용자에게 요처하는 메서드
 	public String getUserChoice()  {
-		System.err.println("==================");
+		System.out.println("==================");
 		System.out.println("Select an option : ");
 		System.out.println("1. Pizza");
 		System.out.println("2. Pasta");
@@ -18,5 +18,22 @@ public class OrderView {
 		return sc.nextLine();
 	}
 	
+	public int getQuantity() {
+		System.out.println("Enter Quantity");
+		int quantity = sc.nextInt();
+		sc.nextLine();
+		return quantity;
+	}
 	
+	//	총 주문 가격을 표시하는 메서드
+	public void displayTotalPrice(int price) {
+		System.out.println("Total Price : " + price + " KRW");
+	}
+	
+	// 주문 완료 메시지 표시 메서드
+	public void displayOrderCompleted() {
+		System.out.println("Order has been completed");
+	}
 }
+
+
