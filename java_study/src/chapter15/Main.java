@@ -1,5 +1,7 @@
 package chapter15;
 
+import java.util.List;
+
 public class Main {
 	// main 메서드
 	// : 해당 메서드가 존재해야 만 자바 프로그램 실행이 가능 (콘솔)
@@ -25,6 +27,9 @@ public class Main {
 		// Book 클래스의 인스턴스
 		
 		//	================================	//	
+		//	도서관 생성
+		Library library = new Library();
+		
 		//	책 추가
 		Book book1 = new PaperBook("자바", "킄", "1234", 150);
 		Book book2 = new PaperBook("JS", "누구게", "1424", 270);
@@ -35,24 +40,45 @@ public class Main {
 		Book book6 = new EBook("스바시바", "키크론", "1234", "www.example.com");
 		Book book7 = new EBook("안녕", "레오폴드", "1234", "www.example.com");
 		
-		//	회원 생성
-		Member member1 = new Member("001", "조지베스트");
-		Member member2 = new Member("002", "요한 크루이프");
-		Member member3 = new Member("003", "로타어 마테우스");
-		Member member4 = new Member("004", "미쉘 플라티니");
+		library.addBook(book1);
+		library.addBook(book2);
+		library.addBook(book3);
+		library.addBook(book4);
+		library.addBook(book5);
+		library.addBook(book6);
+		library.addBook(book7);
 		
-		try {
-			member1.borrowBook(book1);
-			member1.borrowBook(book2);
-			member1.borrowBook(book6);
-
-			member2.borrowBook(book7);
-			
-			member3.borrowBook(book7);
-		} catch (BookAlreadyBorrowedException e) {
-			System.out.println(e.getMessage());
+		
+		//	회원 생성
+//		Member member1 = new Member("001", "조지베스트");
+//		Member member2 = new Member("002", "요한 크루이프");
+//		Member member3 = new Member("003", "로타어 마테우스");
+//		Member member4 = new Member("004", "미쉘 플라티니");
+//		
+//		try {
+//			member1.borrowBook(book1);
+//			member1.borrowBook(book2);
+//			member1.borrowBook(book6);
+//			member2.borrowBook(book7);
+//			member3.borrowBook(book7);
+//		} catch (BookAlreadyBorrowedException e) {
+//			System.out.println(e.getMessage());
+//		} catch (RuntimeException e) {
+//			System.out.println(e.getMessage());
+//		}
+		
+		System.out.println("==========");
+		System.out.println("자바 검색");
+		List<Book> foundByTitle = library.searchBooksByTitle("안녕");
+		for (Book book : foundByTitle) {
+			System.out.println(book.getTitle() + " / " + book.getAuthor());
 		}
 		
+		System.out.println("저자 레오폴드 검색");
+		List<Book> foundByAuthor = library.searchBookByAuthor("레오폴드");
+		for (Book book : foundByAuthor) {
+			System.out.println(book.getTitle() + " / " + book.getAuthor());
+		}
 		
 	}
 }

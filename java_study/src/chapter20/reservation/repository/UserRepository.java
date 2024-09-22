@@ -1,0 +1,35 @@
+package chapter20.reservation.repository;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import chapter20.reservation.model.User;
+
+public class UserRepository {
+	private List<User> users;
+	
+	public UserRepository() {
+		this.users = new ArrayList<User>();
+	}
+	
+	//	사용자 추가 메서드
+	public void addUser(User user) {
+		users.add(user);
+	}
+	
+	//	특정 사용자 조회 메서드
+	public User findById(String userId) {
+		for (User user : users) {
+			if (user.getUserId().equals(userId)) {
+				return user;	//	사용자 ID가 일치하는 사용자 반환
+			}
+		}
+		return null;	//	사용자 없음
+	}
+	
+	//	모든 사용자 조회 메서드
+	public List<User> findAll() {
+		return users;
+	}
+	
+}
